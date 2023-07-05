@@ -81,16 +81,18 @@ function tranform_data (arr, nameArr) {
 
     let html = `<div class"group">${nameArr}</div>` // inner 1
     groupsHtml.innerHTML = html
-    for (const arrIter in arr) {
+
+    for (const arrIter of arr) {
         let obj = arrIter
 
-        for (key of obj) {
-            let objArr = Object.values(obj)[0]
-            let gp_name = `<div class="subGroup">${Object.keys(obj)}
+        for (key in obj) {
+            let objArr = obj[key]
+            let gp_name = `<div class="subGroup">${key}
                                 <div class="partecipants">
                                 </div>
                             </div>` // inner 2 a 1
-            document.querySelector(".group").innerHTML = gp_name
+            document.querySelector(".group").innerHTML += gp_name
+
             for (const u in objArr) {
                 element += `<div class="part">
                                 <p>${u}</p>
